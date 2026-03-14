@@ -4,20 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Descubra Seu Estilo Masculino</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --gold: #C9A84C;
     --gold-light: #E8C97A;
-    --black: #0A0A0A;
-    --dark: #111111;
-    --card: #161616;
-    --border: rgba(201,168,76,0.2);
+    --black: #090909;
+    --card: #141414;
+    --border-soft: rgba(255,255,255,0.06);
+    --border-gold: rgba(201,168,76,0.18);
     --text: #E8E8E8;
-    --muted: #888;
+    --muted: #777;
+    --muted2: #444;
   }
+
+  html { scroll-behavior: smooth; }
 
   body {
     background: var(--black);
@@ -27,21 +30,19 @@
     overflow-x: hidden;
   }
 
-  /* NOISE TEXTURE */
-  body::before {
+  body::after {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.04) 0%, transparent 65%);
     pointer-events: none;
     z-index: 0;
-    opacity: 0.5;
   }
 
   .container {
-    max-width: 680px;
+    max-width: 640px;
     margin: 0 auto;
-    padding: 40px 20px 60px;
+    padding: 48px 20px 72px;
     position: relative;
     z-index: 1;
   }
@@ -49,90 +50,119 @@
   /* HEADER */
   .header {
     text-align: center;
-    margin-bottom: 48px;
-    animation: fadeDown 0.8s ease both;
+    margin-bottom: 52px;
+    animation: fadeDown 0.9s ease both;
   }
 
-  .header .label {
-    font-size: 11px;
-    letter-spacing: 4px;
+  .eyebrow {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 5px;
     text-transform: uppercase;
     color: var(--gold);
-    font-weight: 500;
-    margin-bottom: 16px;
-    display: block;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding: 6px 18px;
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 2px;
   }
 
   .header h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 7vw, 54px);
+    font-size: clamp(34px, 8vw, 58px);
     font-weight: 900;
     line-height: 1.05;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
     color: #fff;
   }
 
-  .header h1 span {
+  .header h1 em {
+    font-style: italic;
     color: var(--gold);
-    display: block;
   }
 
   .header p {
-    margin-top: 16px;
+    margin-top: 18px;
     color: var(--muted);
     font-size: 15px;
     font-weight: 300;
-    line-height: 1.6;
+    line-height: 1.65;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .divider {
-    width: 40px;
+  .gold-line {
+    width: 32px;
     height: 1px;
     background: var(--gold);
-    margin: 20px auto 0;
-    opacity: 0.6;
+    margin: 22px auto 0;
+    opacity: 0.5;
   }
 
   /* PROGRESS */
   .progress-wrap {
-    margin-bottom: 36px;
-    animation: fadeUp 0.6s ease 0.2s both;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease 0.15s both;
   }
 
   .progress-meta {
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
-    letter-spacing: 2px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .progress-label {
+    font-size: 11px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--muted);
-    margin-bottom: 10px;
     font-weight: 500;
   }
 
+  .progress-pct {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
   .progress-bar {
-    height: 2px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 2px;
-    overflow: hidden;
+    height: 1px;
+    background: rgba(255,255,255,0.07);
   }
 
   .progress-fill {
     height: 100%;
     background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    border-radius: 2px;
-    transition: width 0.5s cubic-bezier(.4,0,.2,1);
-    box-shadow: 0 0 12px rgba(201,168,76,0.4);
+    transition: width 0.55s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 0 10px rgba(201,168,76,0.5);
   }
+
+  .progress-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 14px;
+  }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--muted2);
+    transition: all 0.3s;
+  }
+  .dot.done   { background: var(--gold); }
+  .dot.active { background: var(--gold); box-shadow: 0 0 8px var(--gold); transform: scale(1.35); }
 
   /* QUESTION CARD */
   .question-card {
     background: var(--card);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-soft);
     border-radius: 4px;
-    padding: 36px 32px;
-    margin-bottom: 24px;
-    animation: fadeUp 0.5s ease both;
+    padding: 38px 32px 32px;
+    margin-bottom: 16px;
     position: relative;
     overflow: hidden;
   }
@@ -140,214 +170,262 @@
   .question-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
+    top: 0; left: 0; right: 0; height: 1px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    opacity: 0.5;
+    opacity: 0.35;
   }
 
-  .question-number {
-    font-size: 11px;
-    letter-spacing: 3px;
+  .q-number {
+    font-size: 10px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--gold);
     font-weight: 600;
     margin-bottom: 14px;
   }
 
-  .question-text {
+  .q-text {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(18px, 4vw, 24px);
+    font-size: clamp(19px, 4.5vw, 26px);
     font-weight: 700;
     line-height: 1.3;
     color: #fff;
-    margin-bottom: 28px;
+    margin-bottom: 30px;
   }
 
   /* OPTIONS */
-  .options {
-    display: grid;
-    gap: 10px;
-  }
+  .options { display: grid; gap: 9px; }
 
   .option {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 14px;
     padding: 16px 18px;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.018);
+    border: 1px solid rgba(255,255,255,0.065);
     border-radius: 3px;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: border-color 0.22s, background 0.22s, transform 0.22s;
     text-align: left;
     width: 100%;
   }
 
   .option:hover {
-    border-color: rgba(201,168,76,0.4);
-    background: rgba(201,168,76,0.05);
-    transform: translateX(4px);
+    border-color: rgba(201,168,76,0.35);
+    background: rgba(201,168,76,0.04);
+    transform: translateX(3px);
   }
 
   .option.selected {
     border-color: var(--gold);
-    background: rgba(201,168,76,0.08);
+    background: rgba(201,168,76,0.07);
   }
 
-  .option-letter {
-    width: 32px;
-    height: 32px;
-    border: 1px solid rgba(255,255,255,0.15);
+  .opt-letter {
+    width: 30px; height: 30px;
+    border: 1px solid rgba(255,255,255,0.12);
     border-radius: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-size: 11px;
+    font-weight: 700;
     color: var(--muted);
     flex-shrink: 0;
-    transition: all 0.25s;
+    margin-top: 1px;
+    transition: all 0.22s;
   }
 
-  .option.selected .option-letter {
+  .option.selected .opt-letter {
     background: var(--gold);
     border-color: var(--gold);
-    color: var(--black);
+    color: #000;
   }
 
-  .option-text {
+  .opt-body { flex: 1; }
+
+  .opt-text {
     font-size: 14px;
     font-weight: 400;
-    color: var(--text);
-    line-height: 1.4;
+    color: #bbb;
+    line-height: 1.55;
+    transition: color 0.2s;
   }
 
-  .option-tag {
-    margin-left: auto;
+  .option.selected .opt-text { color: var(--text); }
+
+  .opt-feel {
     font-size: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--muted);
-    font-weight: 500;
-    flex-shrink: 0;
+    color: var(--gold);
+    font-weight: 600;
+    margin-top: 6px;
     opacity: 0;
     transition: opacity 0.25s;
   }
 
-  .option.selected .option-tag {
-    opacity: 1;
-    color: var(--gold);
-  }
+  .option.selected .opt-feel { opacity: 1; }
 
-  /* NAV BUTTON */
+  /* NEXT BTN */
   .btn-next {
     width: 100%;
-    padding: 18px;
+    padding: 17px;
     background: var(--gold);
-    color: var(--black);
+    color: #000;
     border: none;
     border-radius: 3px;
     font-family: 'Barlow', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 3px;
+    letter-spacing: 3.5px;
     text-transform: uppercase;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: background 0.22s, transform 0.22s, box-shadow 0.22s, opacity 0.3s;
     opacity: 0;
     pointer-events: none;
-    position: relative;
-    overflow: hidden;
-    animation: none;
+    margin-top: 8px;
   }
 
   .btn-next.active {
     opacity: 1;
     pointer-events: all;
-    animation: fadeUp 0.4s ease both;
+    animation: fadeUp 0.35s ease both;
   }
 
   .btn-next:hover {
     background: var(--gold-light);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(201,168,76,0.25);
+    box-shadow: 0 10px 28px rgba(201,168,76,0.22);
   }
 
-  .btn-next::after {
-    content: '→';
-    margin-left: 10px;
-  }
+  /* RESULT */
+  #resultScreen { display: none; }
+  #resultScreen.visible { display: block; animation: fadeUp 0.7s ease both; }
 
-  /* ===== RESULT ===== */
-  .result-screen {
-    display: none;
-    animation: fadeUp 0.7s ease both;
-  }
-
-  .result-screen.visible { display: block; }
-
-  .result-badge {
+  .result-hero {
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 36px;
   }
 
-  .result-badge .pre {
-    font-size: 11px;
-    letter-spacing: 4px;
+  .result-pre {
+    font-size: 10px;
+    letter-spacing: 5px;
     text-transform: uppercase;
     color: var(--muted);
     font-weight: 500;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
-  .result-style-name {
+  .result-name {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(42px, 10vw, 72px);
+    font-size: clamp(44px, 11vw, 76px);
     font-weight: 900;
     letter-spacing: -2px;
     line-height: 1;
-    background: linear-gradient(135deg, var(--gold), var(--gold-light), #fff8e1);
+    background: linear-gradient(140deg, var(--gold) 20%, var(--gold-light) 60%, #fffbe6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 30px rgba(201,168,76,0.3));
+    filter: drop-shadow(0 0 24px rgba(201,168,76,0.25));
   }
 
-  .result-card {
-    background: var(--card);
-    border: 1px solid var(--border);
+  .result-tagline {
+    margin-top: 10px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* PHOTO PLACEHOLDER */
+  .photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border: 2px dashed rgba(201,168,76,0.3);
     border-radius: 4px;
-    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background: var(--card);
+    margin-bottom: 28px;
     position: relative;
     overflow: hidden;
-    margin-bottom: 20px;
   }
 
-  .result-card::before {
+  .photo-placeholder::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.03) 0%, transparent 60%);
   }
 
-  .result-emoji {
-    font-size: 48px;
-    margin-bottom: 20px;
-    display: block;
+  .photo-icon {
+    width: 52px; height: 52px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+
+  .photo-ph-text {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
     text-align: center;
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+    line-height: 2;
+  }
+
+  .photo-ph-text span {
+    display: block;
+    font-size: 10px;
+    color: var(--muted2);
+    letter-spacing: 1.5px;
+    text-transform: none;
+    font-weight: 300;
+  }
+
+  /* RESULT INFO */
+  .result-info {
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    border-radius: 4px;
+    padding: 32px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .result-info::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.4;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 14px;
   }
 
   .result-desc {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #ccc;
+    font-size: 15px;
+    line-height: 1.85;
+    color: #aaa;
     font-weight: 300;
-    text-align: center;
     margin-bottom: 24px;
   }
 
@@ -355,207 +433,204 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    justify-content: center;
-    margin-bottom: 28px;
   }
 
-  .trait-tag {
-    padding: 6px 14px;
-    border: 1px solid rgba(201,168,76,0.3);
+  .trait {
+    padding: 6px 13px;
+    border: 1px solid rgba(201,168,76,0.25);
     border-radius: 2px;
-    font-size: 11px;
-    letter-spacing: 2px;
+    font-size: 10px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--gold);
     font-weight: 600;
   }
 
-  .cta-section {
-    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
-    border: 1px solid rgba(201,168,76,0.3);
+  /* CTA */
+  .cta-card {
+    background: linear-gradient(135deg, rgba(201,168,76,0.07) 0%, rgba(201,168,76,0.02) 100%);
+    border: 1px solid rgba(201,168,76,0.28);
     border-radius: 4px;
-    padding: 28px;
+    padding: 30px 28px;
     text-align: center;
+    margin-bottom: 12px;
   }
 
-  .cta-section p {
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .cta-sub {
     font-size: 14px;
     color: var(--muted);
-    margin-bottom: 16px;
+    font-weight: 300;
     line-height: 1.6;
-  }
-
-  .cta-section strong {
-    color: var(--text);
-    font-weight: 600;
+    margin-bottom: 22px;
   }
 
   .btn-shopee {
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-    padding: 16px 32px;
+    padding: 17px 36px;
     background: #EE4D2D;
-    color: white;
+    color: #fff;
     text-decoration: none;
     border-radius: 3px;
     font-family: 'Barlow', sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    transition: all 0.25s ease;
-    border: none;
-    cursor: pointer;
+    transition: all 0.25s;
+    width: 100%;
   }
 
   .btn-shopee:hover {
     background: #d44326;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(238,77,45,0.35);
+    box-shadow: 0 10px 28px rgba(238,77,45,0.3);
   }
 
   .btn-restart {
     display: block;
     width: 100%;
-    margin-top: 12px;
     padding: 14px;
     background: transparent;
     color: var(--muted);
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid var(--border-soft);
     border-radius: 3px;
     font-family: 'Barlow', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     cursor: pointer;
-    transition: all 0.25s;
+    transition: all 0.22s;
   }
 
   .btn-restart:hover {
     color: var(--text);
-    border-color: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.15);
   }
-
-  /* QUIZ SCREEN */
-  .quiz-screen { display: block; }
-  .quiz-screen.hidden { display: none; }
 
   /* ANIMATIONS */
   @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
+    from { opacity: 0; transform: translateY(-22px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(22px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); }
-    50%       { box-shadow: 0 0 0 6px rgba(201,168,76,0.15); }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(16px) scale(0.99); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
   }
 
-  .btn-next.active { animation: fadeUp 0.4s ease both, pulse 2s ease 1s infinite; }
+  .card-animate { animation: cardIn 0.42s cubic-bezier(.4,0,.2,1) both; }
 
-  /* MOBILE */
   @media (max-width: 480px) {
-    .question-card { padding: 24px 20px; }
-    .result-card   { padding: 28px 20px; }
-    .option        { padding: 14px 14px; }
-    .option-tag    { display: none; }
+    .question-card { padding: 28px 18px 24px; }
+    .result-info   { padding: 26px 18px; }
+    .cta-card      { padding: 24px 18px; }
   }
 </style>
 </head>
 <body>
-
 <div class="container">
 
   <!-- HEADER -->
   <div class="header">
-    <span class="label">Quiz de Estilo Masculino</span>
-    <h1>Descubra Seu <span>Estilo</span></h1>
-    <p>3 perguntas para revelar qual é a sua identidade visual</p>
-    <div class="divider"></div>
+    <span class="eyebrow">Quiz de Estilo Masculino</span>
+    <h1>Qual é o seu<br><em>Estilo?</em></h1>
+    <p>Responda 3 perguntas e descubra qual identidade visual combina com quem você quer ser.</p>
+    <div class="gold-line"></div>
   </div>
 
   <!-- QUIZ -->
-  <div class="quiz-screen" id="quizScreen">
-
+  <div id="quizScreen">
     <div class="progress-wrap">
       <div class="progress-meta">
-        <span id="progressLabel">Pergunta 1 de 3</span>
-        <span id="progressPct">0%</span>
+        <span class="progress-label" id="progressLabel">Pergunta 1 de 3</span>
+        <span class="progress-pct" id="progressPct">0%</span>
       </div>
       <div class="progress-bar">
         <div class="progress-fill" id="progressFill" style="width:0%"></div>
       </div>
+      <div class="progress-dots" id="progressDots"></div>
     </div>
 
-    <div class="question-card" id="questionCard">
-      <div class="question-number" id="questionNumber">01 —</div>
-      <div class="question-text" id="questionText"></div>
-      <div class="options" id="optionsContainer"></div>
+    <div class="question-card card-animate" id="questionCard">
+      <div class="q-number" id="qNumber">01 —</div>
+      <div class="q-text" id="qText"></div>
+      <div class="options" id="optionsWrap"></div>
     </div>
 
-    <button class="btn-next" id="btnNext" onclick="nextQuestion()">Próxima</button>
-
+    <button class="btn-next" id="btnNext" onclick="nextQ()">CONTINUAR →</button>
   </div>
 
-  <!-- RESULTADO -->
-  <div class="result-screen" id="resultScreen">
-    <div class="result-badge">
-      <span class="pre">Seu estilo é</span>
-      <div class="result-style-name" id="resultName"></div>
+  <!-- RESULT -->
+  <div id="resultScreen">
+
+    <div class="result-hero">
+      <span class="result-pre">Seu estilo é</span>
+      <div class="result-name" id="resultName"></div>
+      <div class="result-tagline" id="resultTagline"></div>
     </div>
 
-    <div class="result-card">
-      <span class="result-emoji" id="resultEmoji"></span>
+    <div id="styleImageWrap"></div>
+
+    <div class="result-info">
+      <div class="section-label">Sua identidade</div>
       <p class="result-desc" id="resultDesc"></p>
       <div class="result-traits" id="resultTraits"></div>
     </div>
 
-    <div class="cta-section">
-      <p><strong>Monte seu look completo agora.</strong><br>Selecionamos as melhores peças para o seu estilo na Shopee.</p>
-      <a href="SEU_LINK_AFILIADO_SHOPEE_AQUI" id="shopeeLink" class="btn-shopee" target="_blank" rel="noopener">
-        🛍️ &nbsp;Ver Peças na Shopee
+    <div class="cta-card">
+      <div class="cta-title">Monte esse look agora</div>
+      <p class="cta-sub" id="ctaSub"></p>
+      <a href="SEU_LINK_AFILIADO_SHOPEE_AQUI" id="shopeeBtn" class="btn-shopee" target="_blank" rel="noopener">
+        🛍️ &nbsp; VER PEÇAS NA SHOPEE
       </a>
     </div>
 
-    <button class="btn-restart" onclick="restartQuiz()">↩ Refazer o Quiz</button>
+    <button class="btn-restart" onclick="restart()">↩ &nbsp; REFAZER O QUIZ</button>
   </div>
 
 </div>
-
 <script>
 const questions = [
   {
-    text: "Como você prefere aparecer numa saída à noite?",
+    text: "Como você quer que as pessoas se sintam quando te veem entrar numa sala?",
     options: [
-      { text: "Roupa simples, mas tudo combinando perfeitamente — detalhes discretos que poucos percebem",       tag: "OLD MONEY",   style: "old_money"   },
-      { text: "Conjunto oversized com tênis chunky e correntes — a roupa fala antes de você chegar",              tag: "STARBOY",     style: "starboy"     },
-      { text: "Blazer sem gravata, calça bem cortada — elegância sem esforço aparente",                           tag: "BUSINESS",    style: "business"    },
-      { text: "Jeans destruído, moletom e sneaker exclusivo — confortável sem abrir mão de estilo",               tag: "STREETWEAR",  style: "streetwear"  },
+      { text: "Que eu tenho classe e tenho dinheiro — sem precisar falar isso pra ninguém.", feel: "Sofisticado", style: "old_money" },
+      { text: "Que eu sou diferente, confiante e não me importo muito.", feel: "Presença marcante", style: "starboy" },
+      { text: "Que sou alguém sério, competente e que estou no controle.", feel: "Autoridade e credibilidade", style: "business" },
+      { text: "Que eu sou autêntico, tenho minha própria vibe e não sigo regras.", feel: "Identidade própria", style: "streetwear" }
     ]
   },
   {
-    text: "Qual item você jamais abriria mão no seu guarda-roupa?",
+    text: "Quando você se olha no espelho antes de sair, o que você quer sentir?",
     options: [
-      { text: "Um relógio clássico de couro e uma camisa de linho bem passada",                                   tag: "OLD MONEY",   style: "old_money"   },
-      { text: "Corrente grossa, óculos escuros e tênis de edição limitada",                                       tag: "STARBOY",     style: "starboy"     },
-      { text: "Um blazer neutro que serve tanto para reunião quanto para jantar",                                  tag: "BUSINESS",    style: "business"    },
-      { text: "Um moletom de marca e calça cargo com bolsos funcionais",                                          tag: "STREETWEAR",  style: "streetwear"  },
+      { text: "Elegância. tudo no lugar, nada exagerado, tudo com propósito.", feel: "Confiança discreta", style: "old_money" },
+      { text: "Que estou no topo — minha roupa, imagem, tudo transmitindo sucesso.", feel: "Poder e atitude", style: "starboy" },
+      { text: "Pronto pra lidar com qualquer ambiente — do trabalho ao jantar.", feel: "Preparado e elegante", style: "business" },
+      { text: "Que eu montei meu visual — confortável, estiloso e sem depender de aprovação.", feel: "Liberdade e autenticidade", style: "streetwear" }
     ]
   },
   {
-    text: "Qual frase define melhor sua relação com moda?",
+    text: "Qual dessas frases mais combina com a imagem que você quer construir?",
     options: [
-      { text: "\"Menos é mais. Qualidade acima de tudo, logotipo é pra quem precisa provar algo\"",               tag: "OLD MONEY",   style: "old_money"   },
-      { text: "\"Meu look tem que impressionar. Sou o centro e sei disso\"",                                      tag: "STARBOY",     style: "starboy"     },
-      { text: "\"Visto para vencer. Cada peça é estratégica\"",                                                   tag: "BUSINESS",    style: "business"    },
-      { text: "\"Me visto pra mim, não pra aprovação. Conforto com identidade\"",                                 tag: "STREETWEAR",  style: "streetwear"  },
+      { text: "\"Não preciso mostrar quanto custa. Quem entende, entende.\"", feel: "Luxo atemporal", style: "old_money" },
+      { text: "\"Meu estilo faz parte da minha história de sucesso.\"", feel: "Vida no topo", style: "starboy" },
+      { text: "\"Me visto pra vencer. Cada detalhe é estratégico.\"", feel: "Ambição e foco", style: "business" },
+      { text: "\"Moda é cultura. Me expresso através do que visto.\"", feel: "Cultura e identidade", style: "streetwear" }
     ]
   }
 ];
@@ -563,144 +638,172 @@ const questions = [
 const results = {
   old_money: {
     name: "Old Money",
-    emoji: "🏛️",
-    desc: "Você tem o estilo mais refinado e atemporal. Prefere qualidade a ostentação, peças clássicas a tendências passageiras. Seu guarda-roupa é discreto mas grita sofisticação pra quem entende.",
-    traits: ["Linho & Tweed", "Paleta Neutra", "Relógio Clássico", "Elegância Discreta"],
-    shopee: "SEU_LINK_AFILIADO_SHOPEE_AQUI"
+    tagline: "Luxo Silencioso · Elegância Atemporal",
+    desc: "Você valoriza o que dura. Seu estilo comunica sofisticação sem precisar de logos chamativos — peças clássicas, materiais nobres e uma presença que poucos conseguem imitar. Você não quer parecer rico. Você simplesmente é refinado.",
+    traits: ["Linho & Cashmere", "Paleta Neutra", "Alfaiataria", "Discreto & Elegante"],
+    cta: "Selecionamos peças clássicas e atemporais para montar o seu look Old Money com qualidade real.",
+    img: "img/old-money.jpg"
   },
   starboy: {
     name: "Starboy",
-    emoji: "⭐",
-    desc: "Você vive para o impacto. Seu estilo é ousado, cheio de personalidade e não passa despercebido. Tendências, peças exclusivas e acessórios marcantes são a sua assinatura.",
-    traits: ["Oversized", "Correntes & Acessórios", "Sneakers Exclusivos", "Streetlux"],
-    shopee: "SEU_LINK_AFILIADO_SHOPEE_AQUI"
+    tagline: "Urbano · Confiante · No Topo",
+    desc: "Você vive para o impacto. Seu estilo é sofisticado, urbano e misterioso — como alguém que alcançou o sucesso e não tem medo de mostrar. Jaquetas escuras, acessórios marcantes e uma aura que comanda qualquer ambiente.",
+    traits: ["Paleta Escura", "Acessórios Marcantes", "Jaqueta de Couro", "Atitude & Mistério"],
+    cta: "Encontramos as peças certas pra montar o visual de quem vive no topo com estilo.",
+    img: "img/starboy.jpg"
   },
   business: {
     name: "Business",
-    emoji: "💼",
-    desc: "Você veste poder com estratégia. Cada peça é escolhida com intenção — elegante, funcional e sempre pronto para qualquer ambiente. Seu estilo transmite confiança antes mesmo de você falar.",
-    traits: ["Blazer Slim", "Paleta Sóbria", "Calça Bem Cortada", "Funcional & Elegante"],
-    shopee: "SEU_LINK_AFILIADO_SHOPEE_AQUI"
+    tagline: "Poder · Precisão · Credibilidade",
+    desc: "Você veste intenção. Cada peça do seu look foi escolhida com estratégia — elegante, funcional e sempre pronto para qualquer ambiente. Seu visual comunica competência antes mesmo de você abrir a boca.",
+    traits: ["Terno Slim", "Camisa Social", "Relógio Clássico", "Formal & Moderno"],
+    cta: "Peças selecionadas para você transmitir autoridade e elegância em qualquer situação.",
+    img: "img/business.jpg"
   },
   streetwear: {
     name: "Streetwear",
-    emoji: "🔥",
-    desc: "Você vive a cultura. Seu estilo nasceu nas ruas e virou identidade — conforto máximo, peças icônicas e uma estética autêntica que não precisa de aprovação de ninguém.",
-    traits: ["Moletom & Cargo", "Sneaker Culture", "Oversized Fit", "Autêntico"],
-    shopee: "SEU_LINK_AFILIADO_SHOPEE_AQUI"
+    tagline: "Autêntico · Cultural · Sem Regras",
+    desc: "Você não segue tendências — você faz parte da cultura. Seu estilo nasceu nas ruas, foi moldado pela música, pela arte e pela autenticidade. Conforto máximo, identidade visual forte e zero necessidade de aprovação.",
+    traits: ["Oversized Fit", "Tênis em Destaque", "Marcas Icônicas", "Hip-Hop & Cultura"],
+    cta: "Achamos as melhores peças streetwear pra você montar um look autêntico e icônico.",
+    img: "img/streetwear.jpg"
   }
 };
 
-let currentQ = 0;
+let current = 0;
 let answers = [];
-const letters = ['A', 'B', 'C', 'D'];
+const letters = ['A','B','C','D'];
 
-function renderQuestion() {
-  const q = questions[currentQ];
-  const pct = Math.round((currentQ / questions.length) * 100);
+function buildDots() {
+  const wrap = document.getElementById('progressDots');
+  wrap.innerHTML = '';
+  questions.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.id = 'dot' + i;
+    wrap.appendChild(d);
+  });
+}
 
-  document.getElementById('progressLabel').textContent = `Pergunta ${currentQ + 1} de ${questions.length}`;
+function render() {
+  const q = questions[current];
+  const pct = Math.round((current / questions.length) * 100);
+
+  document.getElementById('progressLabel').textContent = `Pergunta ${current+1} de ${questions.length}`;
   document.getElementById('progressPct').textContent = pct + '%';
   document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('questionNumber').textContent = String(currentQ + 1).padStart(2, '0') + ' —';
-  document.getElementById('questionText').textContent = q.text;
+  document.getElementById('qNumber').textContent = String(current+1).padStart(2,'0') + ' —';
+  document.getElementById('qText').textContent = q.text;
 
-  const container = document.getElementById('optionsContainer');
-  container.innerHTML = '';
-
+  const wrap = document.getElementById('optionsWrap');
+  wrap.innerHTML = '';
   q.options.forEach((opt, i) => {
     const btn = document.createElement('button');
     btn.className = 'option';
-    btn.setAttribute('data-style', opt.style);
     btn.innerHTML = `
-      <span class="option-letter">${letters[i]}</span>
-      <span class="option-text">${opt.text}</span>
-      <span class="option-tag">${opt.tag}</span>
-    `;
-    btn.onclick = () => selectOption(btn, opt.style);
-    container.appendChild(btn);
+      <span class="opt-letter">${letters[i]}</span>
+      <span class="opt-body">
+        <span class="opt-text">${opt.text}</span>
+        <span class="opt-feel">${opt.feel}</span>
+      </span>`;
+    btn.onclick = () => pick(btn, opt.style);
+    wrap.appendChild(btn);
   });
 
-  const btnNext = document.getElementById('btnNext');
-  btnNext.classList.remove('active');
-  btnNext.textContent = currentQ < questions.length - 1 ? 'Próxima' : 'Ver Resultado';
-  btnNext.insertAdjacentText('beforeend', '');
+  const btn = document.getElementById('btnNext');
+  btn.classList.remove('active');
+  btn.textContent = current < questions.length - 1 ? 'CONTINUAR →' : 'VER MEU ESTILO →';
 
-  // Re-add arrow
-  btnNext.style.position = 'relative';
+  questions.forEach((_,i) => {
+    const d = document.getElementById('dot'+i);
+    d.className = 'dot' + (i < current ? ' done' : i === current ? ' active' : '');
+  });
 
-  // Animate card
   const card = document.getElementById('questionCard');
-  card.style.animation = 'none';
-  card.offsetHeight;
-  card.style.animation = 'fadeUp 0.4s ease both';
+  card.classList.remove('card-animate');
+  void card.offsetWidth;
+  card.classList.add('card-animate');
 }
 
-function selectOption(btn, style) {
+function pick(btn, style) {
   document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
   btn.classList.add('selected');
-  answers[currentQ] = style;
-
-  const btnNext = document.getElementById('btnNext');
-  btnNext.textContent = currentQ < questions.length - 1 ? 'Próxima' : 'Ver Resultado';
-  btnNext.classList.add('active');
+  answers[current] = style;
+  document.getElementById('btnNext').classList.add('active');
 }
 
-function nextQuestion() {
-  if (answers[currentQ] === undefined) return;
-
-  if (currentQ < questions.length - 1) {
-    currentQ++;
-    renderQuestion();
+function nextQ() {
+  if (answers[current] === undefined) return;
+  if (current < questions.length - 1) {
+    current++;
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   } else {
     showResult();
   }
 }
 
 function showResult() {
-  // Count votes
   const count = {};
-  answers.forEach(s => { count[s] = (count[s] || 0) + 1; });
-  const winner = Object.entries(count).sort((a, b) => b[1] - a[1])[0][0];
+  answers.forEach(s => { count[s] = (count[s]||0) + 1; });
+  const winner = Object.entries(count).sort((a,b) => b[1]-a[1])[0][0];
   const r = results[winner];
 
-  document.getElementById('resultName').textContent = r.name;
-  document.getElementById('resultEmoji').textContent = r.emoji;
-  document.getElementById('resultDesc').textContent = r.desc;
-  document.getElementById('shopeeLink').href = r.shopee;
+  document.getElementById('resultName').textContent    = r.name;
+  document.getElementById('resultTagline').textContent = r.tagline;
+  document.getElementById('resultDesc').textContent    = r.desc;
+  document.getElementById('ctaSub').textContent        = r.cta;
 
-  const traitsEl = document.getElementById('resultTraits');
-  traitsEl.innerHTML = '';
+  // render image or placeholder
+  const imgWrap = document.getElementById('styleImageWrap');
+  const img = new Image();
+  img.onload = () => {
+    imgWrap.innerHTML = `<img src="${r.img}" alt="Look ${r.name}" style="width:100%;border-radius:4px;margin-bottom:28px;display:block;object-fit:cover;aspect-ratio:3/4;">`;
+  };
+  img.onerror = () => {
+    imgWrap.innerHTML = `
+      <div class="photo-placeholder">
+        <div class="photo-icon">📷</div>
+        <div class="photo-ph-text">
+          Adicione sua foto aqui
+          <span>Coloque a imagem em img/${winner}.jpg</span>
+        </div>
+      </div>`;
+  };
+  img.src = r.img;
+
+  const traits = document.getElementById('resultTraits');
+  traits.innerHTML = '';
   r.traits.forEach(t => {
-    const span = document.createElement('span');
-    span.className = 'trait-tag';
-    span.textContent = t;
-    traitsEl.appendChild(span);
+    const s = document.createElement('span');
+    s.className = 'trait';
+    s.textContent = t;
+    traits.appendChild(s);
   });
 
   document.getElementById('progressFill').style.width = '100%';
-  document.getElementById('progressPct').textContent = '100%';
+  document.getElementById('progressPct').textContent  = '100%';
+  questions.forEach((_,i) => { document.getElementById('dot'+i).className = 'dot done'; });
 
-  document.getElementById('quizScreen').classList.add('hidden');
+  document.getElementById('quizScreen').style.display = 'none';
   const rs = document.getElementById('resultScreen');
   rs.classList.add('visible');
-  rs.style.animation = 'none';
-  rs.offsetHeight;
-  rs.style.animation = 'fadeUp 0.7s ease both';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function restartQuiz() {
-  currentQ = 0;
+function restart() {
+  current = 0;
   answers = [];
-  document.getElementById('quizScreen').classList.remove('hidden');
-  document.getElementById('resultScreen').classList.remove('visible');
-  renderQuestion();
+  document.getElementById('quizScreen').style.display = 'block';
+  const rs = document.getElementById('resultScreen');
+  rs.classList.remove('visible');
+  rs.style.display = 'none';
+  render();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Init
-renderQuestion();
+buildDots();
+render();
 </script>
 </body>
 </html>
