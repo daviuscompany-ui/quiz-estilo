@@ -535,15 +535,178 @@
 
   .card-animate { animation: cardIn 0.42s cubic-bezier(.4,0,.2,1) both; }
 
+  /* BRANDING */
+  .brand-tag {
+    position: fixed;
+    bottom: 18px;
+    right: 20px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted2);
+    font-weight: 600;
+    z-index: 100;
+    pointer-events: none;
+    user-select: none;
+  }
+  .brand-tag span { color: var(--gold); opacity: 0.6; }
+
+  /* SPLASH */
+  #splashScreen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    position: relative;
+    z-index: 1;
+    animation: fadeDown 0.9s ease both;
+  }
+  #splashScreen.hidden { display: none; }
+
+  .splash-eyebrow {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 28px;
+    padding: 6px 18px;
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 2px;
+  }
+
+  .splash-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 11vw, 80px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -2px;
+    color: #fff;
+  }
+
+  .splash-title em {
+    font-style: italic;
+    background: linear-gradient(140deg, var(--gold) 20%, var(--gold-light) 60%, #fffbe6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+  }
+
+  .splash-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 380px;
+    margin: 20px auto 0;
+  }
+
+  .splash-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+    margin: 32px auto;
+  }
+
+  .splash-styles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 44px;
+  }
+
+  .splash-style-tag {
+    padding: 7px 14px;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 2px;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  .btn-start {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 18px 52px;
+    background: var(--gold);
+    color: #000;
+    border: none;
+    border-radius: 3px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    animation: pulse-gold 2.5s ease 1s infinite;
+  }
+
+  .btn-start:hover {
+    background: var(--gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(201,168,76,0.28);
+    animation: none;
+  }
+
+  .splash-footer {
+    margin-top: 32px;
+    font-size: 11px;
+    color: var(--muted2);
+    letter-spacing: 1px;
+  }
+
+  @keyframes pulse-gold {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); }
+    50%       { box-shadow: 0 0 0 8px rgba(201,168,76,0.12); }
+  }
+
   @media (max-width: 480px) {
     .question-card { padding: 28px 18px 24px; }
     .result-info   { padding: 26px 18px; }
     .cta-card      { padding: 24px 18px; }
+    .splash-title  { letter-spacing: -1px; }
   }
 </style>
 </head>
 <body>
-<div class="container">
+
+<!-- BRAND TAG fixo no canto -->
+<div class="brand-tag">by <span>Davius Improvement</span></div>
+
+<!-- TELA INICIAL -->
+<div id="splashScreen">
+  <span class="splash-eyebrow">Davius Improvement</span>
+  <h1 class="splash-title">
+    Qual é o seu
+    <em>Estilo?</em>
+  </h1>
+  <p class="splash-sub">Descubra em 3 perguntas qual identidade visual combina com quem você quer ser.</p>
+  <div class="splash-divider"></div>
+  <div class="splash-styles">
+    <span class="splash-style-tag">Old Money</span>
+    <span class="splash-style-tag">Starboy</span>
+    <span class="splash-style-tag">Business</span>
+    <span class="splash-style-tag">Streetwear</span>
+    <span class="splash-style-tag">Bruce Wayne</span>
+  </div>
+  <button class="btn-start" onclick="startQuiz()">DESCOBRIR MEU ESTILO →</button>
+  <p class="splash-footer">3 perguntas &nbsp;·&nbsp; resultado imediato &nbsp;·&nbsp; 100% gratuito</p>
+</div>
+
+<!-- QUIZ + RESULTADO -->
+<div class="container" id="mainContainer" style="display:none;">
 
   <!-- HEADER -->
   <div class="header">
@@ -557,7 +720,7 @@
   <div id="quizScreen">
     <div class="progress-wrap">
       <div class="progress-meta">
-        <span class="progress-label" id="progressLabel">Pergunta 1 de 3</span>
+        <span class="progress-label" id="progressLabel">Pergunta 1 de 5</span>
         <span class="progress-pct" id="progressPct">0%</span>
       </div>
       <div class="progress-bar">
@@ -611,7 +774,7 @@ const questions = [
   {
     text: "Como você quer que as pessoas se sintam quando te veem entrar numa sala?",
     options: [
-      { text: "Que eu tenho classe e refinamento — sem precisar falar isso pra ninguém.", feel: "Sofisticação silenciosa", style: "old_money" },
+      { text: "Que eu tenho classe e refinamento — sem precisar gritar isso pra ninguém.", feel: "Sofisticação silenciosa", style: "old_money" },
       { text: "Que eu sou diferente, confiante e que claramente vivo bem.", feel: "Presença marcante", style: "starboy" },
       { text: "Que sou alguém sério, competente e que está no controle.", feel: "Autoridade e credibilidade", style: "business" },
       { text: "Que eu sou autêntico, tenho minha própria vibe e não sigo regras de ninguém.", feel: "Identidade própria", style: "streetwear" },
@@ -636,6 +799,26 @@ const questions = [
       { text: "\"Me visto pra vencer. Cada detalhe é estratégico.\"", feel: "Ambição e foco", style: "business" },
       { text: "\"Moda é cultura. Me expresso através do que visto.\"", feel: "Cultura e identidade", style: "streetwear" },
       { text: "\"Poucos sabem quem sou de verdade. Meu visual diz tudo sem revelar nada.\"", feel: "Mistério e poder", style: "bruce_wayne" }
+    ]
+  },
+  {
+    text: "Num dia livre, como você prefere se apresentar pro mundo?",
+    options: [
+      { text: "Calça de alfaiataria, camisa de linho aberta e tênis clássico — arrumado sem parecer que tentou.", feel: "Casual sofisticado", style: "old_money" },
+      { text: "Conjunto combinando, corrente no pescoço e óculos escuros — pronto pra ser fotografado.", feel: "Sempre no personagem", style: "starboy" },
+      { text: "Blazer sem gravata, calça bem cortada — confortável mas nunca desleixado.", feel: "Smart casual", style: "business" },
+      { text: "Moletom oversized, tênis icônico e boné — conforto total com identidade.", feel: "Vibe de rua", style: "streetwear" },
+      { text: "Jaqueta escura, calça bem ajustada e sapato limpo — simples, mas parece que custou caro.", feel: "Bilionário off duty", style: "bruce_wayne" }
+    ]
+  },
+  {
+    text: "O que você quer que seu estilo diga sobre você sem precisar falar nada?",
+    options: [
+      { text: "Que tenho gosto apurado e fui criado com classe — isso não se compra, se constrói.", feel: "Herança e refinamento", style: "old_money" },
+      { text: "Que conquistei o que tenho e meu visual mostra isso — sucesso aparece.", feel: "Ascensão e estilo", style: "starboy" },
+      { text: "Que sou focado, ambicioso e cada detalhe da minha vida tem intenção.", feel: "Disciplina visível", style: "business" },
+      { text: "Que faço parte de uma cultura real — não sigo moda, vivo ela.", feel: "Autenticidade urbana", style: "streetwear" },
+      { text: "Que há muito mais em mim do que aparenta — e você nunca vai saber tudo.", feel: "Profundidade e mistério", style: "bruce_wayne" }
     ]
   }
 ];
@@ -817,11 +1000,20 @@ function showResult() {
 function restart() {
   current = 0;
   answers = [];
+  // volta para a tela inicial
+  document.getElementById('splashScreen').classList.remove('hidden');
+  document.getElementById('mainContainer').style.display = 'none';
   document.getElementById('quizScreen').style.display = 'block';
   const rs = document.getElementById('resultScreen');
   rs.classList.remove('visible');
   rs.style.display = 'none';
   render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function startQuiz() {
+  document.getElementById('splashScreen').classList.add('hidden');
+  document.getElementById('mainContainer').style.display = 'block';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
