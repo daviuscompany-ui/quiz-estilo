@@ -320,7 +320,7 @@
 
   .result-name {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(44px, 11vw, 76px);
+    font-size: clamp(40px, 10vw, 72px);
     font-weight: 900;
     letter-spacing: -2px;
     line-height: 1;
@@ -595,7 +595,7 @@
     <div class="cta-card">
       <div class="cta-title">Monte esse look agora</div>
       <p class="cta-sub" id="ctaSub"></p>
-      <a href="SEU_LINK_AFILIADO_SHOPEE_AQUI" id="shopeeBtn" class="btn-shopee" target="_blank" rel="noopener">
+      <a href="#" id="shopeeBtn" class="btn-shopee" target="_blank" rel="noopener">
         🛍️ &nbsp; VER PEÇAS NA SHOPEE
       </a>
     </div>
@@ -605,23 +605,27 @@
 
 </div>
 <script>
+
+// ─── PERGUNTAS ───────────────────────────────────────────────────────────────
 const questions = [
   {
     text: "Como você quer que as pessoas se sintam quando te veem entrar numa sala?",
     options: [
-      { text: "Que eu tenho classe e tenho dinheiro — sem precisar falar isso pra ninguém.", feel: "Sofisticado", style: "old_money" },
-      { text: "Que eu sou diferente, confiante e não me importo muito.", feel: "Presença marcante", style: "starboy" },
-      { text: "Que sou alguém sério, competente e que estou no controle.", feel: "Autoridade e credibilidade", style: "business" },
-      { text: "Que eu sou autêntico, tenho minha própria vibe e não sigo regras.", feel: "Identidade própria", style: "streetwear" }
+      { text: "Que eu tenho classe e refinamento — sem precisar falar isso pra ninguém.", feel: "Sofisticação silenciosa", style: "old_money" },
+      { text: "Que eu sou diferente, confiante e que claramente vivo bem.", feel: "Presença marcante", style: "starboy" },
+      { text: "Que sou alguém sério, competente e que está no controle.", feel: "Autoridade e credibilidade", style: "business" },
+      { text: "Que eu sou autêntico, tenho minha própria vibe e não sigo regras de ninguém.", feel: "Identidade própria", style: "streetwear" },
+      { text: "Que esse cara tem poder — mas não precisa provar pra ninguém.", feel: "Poder silencioso", style: "bruce_wayne" }
     ]
   },
   {
     text: "Quando você se olha no espelho antes de sair, o que você quer sentir?",
     options: [
-      { text: "Elegância. tudo no lugar, nada exagerado, tudo com propósito.", feel: "Confiança discreta", style: "old_money" },
+      { text: "Elegância. Tudo no lugar, nada exagerado, tudo com propósito.", feel: "Confiança discreta", style: "old_money" },
       { text: "Que estou no topo — minha roupa, imagem, tudo transmitindo sucesso.", feel: "Poder e atitude", style: "starboy" },
-      { text: "Pronto pra lidar com qualquer ambiente — do trabalho ao jantar.", feel: "Preparado e elegante", style: "business" },
-      { text: "Que eu montei meu visual — confortável, estiloso e sem depender de aprovação.", feel: "Liberdade e autenticidade", style: "streetwear" }
+      { text: "Pronto pra dominar qualquer ambiente — do trabalho ao jantar.", feel: "Preparado e elegante", style: "business" },
+      { text: "Que o look é meu — confortável, estiloso e sem depender de aprovação.", feel: "Liberdade e autenticidade", style: "streetwear" },
+      { text: "Que pareço alguém que carrega o mundo nos ombros — e ainda assim está impecável.", feel: "Frieza e controle", style: "bruce_wayne" }
     ]
   },
   {
@@ -630,11 +634,14 @@ const questions = [
       { text: "\"Não preciso mostrar quanto custa. Quem entende, entende.\"", feel: "Luxo atemporal", style: "old_money" },
       { text: "\"Meu estilo faz parte da minha história de sucesso.\"", feel: "Vida no topo", style: "starboy" },
       { text: "\"Me visto pra vencer. Cada detalhe é estratégico.\"", feel: "Ambição e foco", style: "business" },
-      { text: "\"Moda é cultura. Me expresso através do que visto.\"", feel: "Cultura e identidade", style: "streetwear" }
+      { text: "\"Moda é cultura. Me expresso através do que visto.\"", feel: "Cultura e identidade", style: "streetwear" },
+      { text: "\"Poucos sabem quem sou de verdade. Meu visual diz tudo sem revelar nada.\"", feel: "Mistério e poder", style: "bruce_wayne" }
     ]
   }
 ];
 
+// ─── RESULTADOS ──────────────────────────────────────────────────────────────
+// ⚠️ SUBSTITUA os links abaixo pelos seus links de afiliado da Shopee
 const results = {
   old_money: {
     name: "Old Money",
@@ -642,7 +649,8 @@ const results = {
     desc: "Você valoriza o que dura. Seu estilo comunica sofisticação sem precisar de logos chamativos — peças clássicas, materiais nobres e uma presença que poucos conseguem imitar. Você não quer parecer rico. Você simplesmente é refinado.",
     traits: ["Linho & Cashmere", "Paleta Neutra", "Alfaiataria", "Discreto & Elegante"],
     cta: "Selecionamos peças clássicas e atemporais para montar o seu look Old Money com qualidade real.",
-    img: "img/old-money.png"
+    img: "img/old-money.png",
+    shopee: "https://collshp.com/daviusimprovement828/category/3419180?view=storefront"
   },
   starboy: {
     name: "Starboy",
@@ -650,7 +658,8 @@ const results = {
     desc: "Você vive para o impacto. Seu estilo é sofisticado, urbano e misterioso — como alguém que alcançou o sucesso e não tem medo de mostrar. Jaquetas escuras, acessórios marcantes e uma aura que comanda qualquer ambiente.",
     traits: ["Paleta Escura", "Acessórios Marcantes", "Jaqueta de Couro", "Atitude & Mistério"],
     cta: "Encontramos as peças certas pra montar o visual de quem vive no topo com estilo.",
-    img: "img/starboy.png"
+    img: "img/starboy.png",
+    shopee: "SEU_LINK_STARBOY_AQUI"
   },
   business: {
     name: "Business",
@@ -658,7 +667,8 @@ const results = {
     desc: "Você veste intenção. Cada peça do seu look foi escolhida com estratégia — elegante, funcional e sempre pronto para qualquer ambiente. Seu visual comunica competência antes mesmo de você abrir a boca.",
     traits: ["Terno Slim", "Camisa Social", "Relógio Clássico", "Formal & Moderno"],
     cta: "Peças selecionadas para você transmitir autoridade e elegância em qualquer situação.",
-    img: "img/business.png"
+    img: "img/business.png",
+    shopee: "SEU_LINK_BUSINESS_AQUI"
   },
   streetwear: {
     name: "Streetwear",
@@ -666,14 +676,26 @@ const results = {
     desc: "Você não segue tendências — você faz parte da cultura. Seu estilo nasceu nas ruas, foi moldado pela música, pela arte e pela autenticidade. Conforto máximo, identidade visual forte e zero necessidade de aprovação.",
     traits: ["Oversized Fit", "Tênis em Destaque", "Marcas Icônicas", "Hip-Hop & Cultura"],
     cta: "Achamos as melhores peças streetwear pra você montar um look autêntico e icônico.",
-    img: "img/streetwear.png"
+    img: "img/streetwear.png",
+    shopee: "SEU_LINK_STREETWEAR_AQUI"
+  },
+  bruce_wayne: {
+    name: "Bruce Wayne",
+    tagline: "Poder Silencioso · Elegância Sombria",
+    desc: "Você não precisa de holofotes — você é o holofote. Terno sob medida, paleta escura, casaco longo e zero ostentação. Seu estilo carrega uma frieza calculada que poucos conseguem imitar: o bilionário que ninguém consegue decifrar.",
+    traits: ["Terno Sob Medida", "Overcoat Escuro", "Preto & Cinza", "Relógio de Luxo"],
+    cta: "Selecionamos as peças certas pra você montar um look de bilionário discreto e poderoso.",
+    img: "img/bruce-wayne.png",
+    shopee: "SEU_LINK_BRUCE_WAYNE_AQUI"
   }
 };
 
+// ─── ESTADO ───────────────────────────────────────────────────────────────────
 let current = 0;
 let answers = [];
-const letters = ['A','B','C','D'];
+const letters = ['A','B','C','D','E'];
 
+// ─── FUNÇÕES ──────────────────────────────────────────────────────────────────
 function buildDots() {
   const wrap = document.getElementById('progressDots');
   wrap.innerHTML = '';
@@ -753,8 +775,9 @@ function showResult() {
   document.getElementById('resultTagline').textContent = r.tagline;
   document.getElementById('resultDesc').textContent    = r.desc;
   document.getElementById('ctaSub').textContent        = r.cta;
+  document.getElementById('shopeeBtn').href            = r.shopee;
 
-  // render image or placeholder
+  // imagem ou placeholder
   const imgWrap = document.getElementById('styleImageWrap');
   const img = new Image();
   img.onload = () => {
@@ -766,7 +789,7 @@ function showResult() {
         <div class="photo-icon">📷</div>
         <div class="photo-ph-text">
           Adicione sua foto aqui
-          <span>Coloque a imagem em img/${winner}.jpg</span>
+          <span>Coloque a imagem em: ${r.img}</span>
         </div>
       </div>`;
   };
